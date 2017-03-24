@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -284,7 +284,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-24T19:21:38+08:00">
                 2017-03-24
@@ -402,7 +402,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-24T19:19:11+08:00">
                 2017-03-24
@@ -450,7 +450,9 @@
 <li>高效</li>
 <li>运行期没有停顿</li>
 <li>对象有确定的生命周期</li>
-<li>易于实现<br>####原始的引用计数法也有明显的缺点：</li>
+<li>易于实现</li>
+</ol>
+<h4 id="原始的引用计数法也有明显的缺点："><a href="#原始的引用计数法也有明显的缺点：" class="headerlink" title="原始的引用计数法也有明显的缺点："></a>原始的引用计数法也有明显的缺点：</h4><ol>
 <li>维护引用计数的次数和引用赋值成正比，而不像mark and sweep等基本与回收的内存数量有关。</li>
 <li>无法解决循环引用的问题。A和B相互引用而再没有外部引用A与B中的任何一个，它们的引用计数都为1，但显然应该被回收。</li>
 <li>为了解决这两个致命弱点，Python又引入了以下两种GC机制。<br>###标记-清除<br>“标记-清除”法是为了解决循环引用问题。可以包含其他对象引用的容器对象（如list, dict, set，甚至class）都可能产生循环引用，为此，在申请内存时，所有容器对象的头部又加上了PyGC_Head来实现“标记-清除”机制。</li>
@@ -532,7 +534,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -586,7 +588,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
