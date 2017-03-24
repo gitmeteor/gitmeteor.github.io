@@ -97,7 +97,7 @@
 <meta property="og:description" content="Python GC主要使用引用计数（reference counting）来跟踪和回收垃圾。在引用计数的基础上，通过“标记-清除”（mark and sweep）解决容器对象可能产生的循环引用问题，通过“分代回收”（generation collection）以空间换时间的方法提高垃圾回收效率。
 
 引用计数引用计数法在对象内部维护了一个被其他对象引用数的引用计数值，当这个引用计数值为0时，说明这">
-<meta property="og:updated_time" content="2017-03-24T12:06:34.752Z">
+<meta property="og:updated_time" content="2017-03-24T16:43:48.945Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python-gc">
 <meta name="twitter:description" content="Python GC主要使用引用计数（reference counting）来跟踪和回收垃圾。在引用计数的基础上，通过“标记-清除”（mark and sweep）解决容器对象可能产生的循环引用问题，通过“分代回收”（generation collection）以空间换时间的方法提高垃圾回收效率。
@@ -332,10 +332,14 @@
 </blockquote>
 <h3 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h3><p>引用计数法在对象内部维护了一个被其他对象引用数的引用计数值，当这个引用计数值为0时，说明这个对象不再被其他对象引用，就可以被回收了。<br>结合源码来看， 所有Python对象的头部包含了这样一个结构PyObject（相当于继承自PyObject）：<br>引用计数法有很明显的优点：</p>
 <ol>
-<li>高效</li>
-<li>运行期没有停顿</li>
-<li>对象有确定的生命周期</li>
-<li>易于实现</li>
+<li><p>高效</p>
+</li>
+<li><p>运行期没有停顿</p>
+</li>
+<li><p>对象有确定的生命周期</p>
+</li>
+<li><p>易于实现</p>
+</li>
 </ol>
 <blockquote>
 <p>原始的引用计数法也有明显的缺点：</p>

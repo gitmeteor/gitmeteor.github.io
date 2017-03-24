@@ -92,8 +92,10 @@ python的内存管理机制由两部分组成， 其由PYMALLOC_DEBUG控制，�
 
 
 python的内存管理机制可以抽象成一种层次结构：
+
 最底层：操作系统提供的内存管理接口，由其实现并维护
-第一层：对最底层的包装，为python提供统一的原生内存管理接口和面向python中类型的内存分配器">
+
+第一层：对最底层的包装，为python提供统一的原生内存管理接口和面向python中类型的内存分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python-memory-management.md">
 <meta property="og:url" content="http://yoursite.com/2017/03/24/python-memory-management/index.html">
@@ -103,9 +105,11 @@ python的内存管理机制由两部分组成， 其由PYMALLOC_DEBUG控制，�
 
 
 python的内存管理机制可以抽象成一种层次结构：
+
 最底层：操作系统提供的内存管理接口，由其实现并维护
-第一层：对最底层的包装，为python提供统一的原生内存管理接口和面向python中类型的内存分配器">
-<meta property="og:updated_time" content="2017-03-24T12:06:41.384Z">
+
+第一层：对最底层的包装，为python提供统一的原生内存管理接口和面向python中类型的内存分">
+<meta property="og:updated_time" content="2017-03-24T16:44:02.666Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python-memory-management.md">
 <meta name="twitter:description" content="python memory management
@@ -113,8 +117,10 @@ python的内存管理机制由两部分组成， 其由PYMALLOC_DEBUG控制，�
 
 
 python的内存管理机制可以抽象成一种层次结构：
+
 最底层：操作系统提供的内存管理接口，由其实现并维护
-第一层：对最底层的包装，为python提供统一的原生内存管理接口和面向python中类型的内存分配器">
+
+第一层：对最底层的包装，为python提供统一的原生内存管理接口和面向python中类型的内存分">
 
 
 
@@ -343,11 +349,16 @@ python的内存管理机制可以抽象成一种层次结构：
 <p>python的内存管理机制由两部分组成， 其由PYMALLOC_DEBUG控制，在debug模式下的内存管理机制和正常模式下的内存管理模式。</p>
 </blockquote>
 <ol>
-<li>python的内存管理机制可以抽象成一种层次结构：<ol>
-<li>最底层：操作系统提供的内存管理接口，由其实现并维护</li>
-<li>第一层：对最底层的包装，为python提供统一的原生内存管理接口和面向python中类型的内存分配器。简单地说，C语言中的malloc是需要用户自行提供申请空间的大小，而python可以由类型和数量自行判断内存空间大小</li>
-<li>第二层：提供创建python对象的接口</li>
-<li>第三层：为常用对象提供更抽象的内存管理策略，如整数，字符串，主要是对象缓存池机制</li>
+<li><p>python的内存管理机制可以抽象成一种层次结构：</p>
+<ol>
+<li><p>最底层：操作系统提供的内存管理接口，由其实现并维护</p>
+</li>
+<li><p>第一层：对最底层的包装，为python提供统一的原生内存管理接口和面向python中类型的内存分配器。简单地说，C语言中的malloc是需要用户自行提供申请空间的大小，而python可以由类型和数量自行判断内存空间大小</p>
+</li>
+<li><p>第二层：提供创建python对象的接口</p>
+</li>
+<li><p>第三层：为常用对象提供更抽象的内存管理策略，如整数，字符串，主要是对象缓存池机制</p>
+</li>
 </ol>
 </li>
 </ol>
