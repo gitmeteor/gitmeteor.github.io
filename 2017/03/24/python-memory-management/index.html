@@ -87,12 +87,34 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="python memory management
+python的内存管理机制由两部分组成，其由PYMALLOC_DEBUG控制，在debug模式下的内存管理机制和正常模式下的内存管理模式。
+
+
+python的内存管理机制可以抽象成一种层次结构：
+最底层：操作系统提供的内存管理接口，由其实现并维护
+第一层：对最底层的包装，为python提供统一的原生内存管理接口和面向python中类型的内存分配器。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python-memory-management.md">
+<meta property="og:url" content="http://yoursite.com/2017/03/24/python-memory-management/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="python memory management
+python的内存管理机制由两部分组成，其由PYMALLOC_DEBUG控制，在debug模式下的内存管理机制和正常模式下的内存管理模式。
+
+
+python的内存管理机制可以抽象成一种层次结构：
+最底层：操作系统提供的内存管理接口，由其实现并维护
+第一层：对最底层的包装，为python提供统一的原生内存管理接口和面向python中类型的内存分配器。">
+<meta property="og:updated_time" content="2017-03-24T11:57:33.742Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="python-memory-management.md">
+<meta name="twitter:description" content="python memory management
+python的内存管理机制由两部分组成，其由PYMALLOC_DEBUG控制，在debug模式下的内存管理机制和正常模式下的内存管理模式。
+
+
+python的内存管理机制可以抽象成一种层次结构：
+最底层：操作系统提供的内存管理接口，由其实现并维护
+第一层：对最底层的包装，为python提供统一的原生内存管理接口和面向python中类型的内存分配器。">
 
 
 
@@ -120,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/24/python-memory-management/"/>
 
 
 
 
 
-  <title> Hexo </title>
+  <title> python-memory-management.md | Hexo </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -151,9 +173,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -236,9 +256,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -268,10 +288,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/03/24/python-memory-management/" itemprop="url">
-                  python-memory-management.md
-                </a>
+                python-memory-management.md
               
             
           </h1>
@@ -322,9 +339,7 @@
       
 
       
-        
-          
-            <h3 id="python-memory-management"><a href="#python-memory-management" class="headerlink" title="python memory management"></a>python memory management</h3><blockquote>
+        <h3 id="python-memory-management"><a href="#python-memory-management" class="headerlink" title="python memory management"></a>python memory management</h3><blockquote>
 <p>python的内存管理机制由两部分组成，其由PYMALLOC_DEBUG控制，在debug模式下的内存管理机制和正常模式下的内存管理模式。</p>
 </blockquote>
 <ol>
@@ -376,16 +391,20 @@
 </li>
 </ol>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
@@ -394,275 +413,38 @@
       
 
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/24/hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
         
-        
-          <h1 class="post-title" itemprop="name headline">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/03/24/hexo/" rel="next" title="Hexo">
+                <i class="fa fa-chevron-left"></i> Hexo
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2017/03/24/hexo/" itemprop="url">
-                  Hexo
-                </a>
-              
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-24T19:21:38+08:00">
-                2017-03-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is first post.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/24/python-gc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/24/python-gc/" itemprop="url">
-                  python-gc
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-24T19:19:11+08:00">
-                2017-03-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Python GC主要使用引用计数（reference counting）来跟踪和回收垃圾。在引用计数的基础上，通过“标记-清除”（mark and sweep）解决容器对象可能产生的循环引用问题，<br>通过“分代回收”（generation collection）以空间换时间的方法提高垃圾回收效率。</p>
-</blockquote>
-<h3 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h3><p>引用计数法在对象内部维护了一个被其他对象引用数的引用计数值，当这个引用计数值为0时，说明这个对象不再被其他对象引用，就可以被回收了。<br>结合源码来看，所有Python对象的头部包含了这样一个结构PyObject（相当于继承自PyObject）：<br>引用计数法有很明显的优点：</p>
-<ol>
-<li>高效</li>
-<li>运行期没有停顿</li>
-<li>对象有确定的生命周期</li>
-<li>易于实现</li>
-</ol>
-<blockquote>
-<p>原始的引用计数法也有明显的缺点：</p>
-</blockquote>
-<ol>
-<li>维护引用计数的次数和引用赋值成正比，而不像mark and sweep等基本与回收的内存数量有关。</li>
-<li>无法解决循环引用的问题。A和B相互引用而再没有外部引用A与B中的任何一个，它们的引用计数都为1，但显然应该被回收。</li>
-<li>为了解决这两个致命弱点，Python又引入了以下两种GC机制。</li>
-</ol>
-<h3 id="标记-清除"><a href="#标记-清除" class="headerlink" title="标记-清除"></a>标记-清除</h3><p>“标记-清除”法是为了解决循环引用问题。可以包含其他对象引用的容器对象（如list, dict, set，甚至class）都可能产生循环引用，为此，在申请内存时，所有容器对象的头部又加上了PyGC_Head来实现“标记-清除”机制。</p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
           
           </div>
@@ -670,6 +452,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -689,8 +475,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -734,6 +529,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#python-memory-management"><span class="nav-number">1.</span> <span class="nav-text">python memory management</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小块空间的内存池"><span class="nav-number">2.</span> <span class="nav-text">小块空间的内存池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#block"><span class="nav-number">3.</span> <span class="nav-text">block</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pool"><span class="nav-number">4.</span> <span class="nav-text">pool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#arena"><span class="nav-number">5.</span> <span class="nav-text">arena</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#arena回收"><span class="nav-number">6.</span> <span class="nav-text">arena回收</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#pool在内存池中的三种状态"><span class="nav-number">6.0.1.</span> <span class="nav-text">pool在内存池中的三种状态</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -839,6 +650,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
