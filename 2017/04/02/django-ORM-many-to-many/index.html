@@ -1,0 +1,692 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="关联关系字段 (Relationship fields)
+ForeignKey,ManyToManyField与OneToOneField分别在Model中定义多对一，多对多，一对一关系。
+
+例如，一本书由一家出版社出版，一家出版社可以出版很多书。一本书由多个作者合写，一个作者可以写很多书。12345678class Author(models.Model):    name=models.Cha">
+<meta property="og:type" content="article">
+<meta property="og:title" content="django-ORM-many_to_many">
+<meta property="og:url" content="http://yoursite.com/2017/04/02/django-ORM-many-to-many/index.html">
+<meta property="og:site_name" content="python-z">
+<meta property="og:description" content="关联关系字段 (Relationship fields)
+ForeignKey,ManyToManyField与OneToOneField分别在Model中定义多对一，多对多，一对一关系。
+
+例如，一本书由一家出版社出版，一家出版社可以出版很多书。一本书由多个作者合写，一个作者可以写很多书。12345678class Author(models.Model):    name=models.Cha">
+<meta property="og:updated_time" content="2017-04-07T08:20:17.614Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="django-ORM-many_to_many">
+<meta name="twitter:description" content="关联关系字段 (Relationship fields)
+ForeignKey,ManyToManyField与OneToOneField分别在Model中定义多对一，多对多，一对一关系。
+
+例如，一本书由一家出版社出版，一家出版社可以出版很多书。一本书由多个作者合写，一个作者可以写很多书。12345678class Author(models.Model):    name=models.Cha">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/02/django-ORM-many-to-many/"/>
+
+
+
+
+
+  <title> django-ORM-many_to_many | python-z </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">python-z</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/02/django-ORM-many-to-many/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="python-z">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="python-z">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                django-ORM-many_to_many
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-02T12:19:51+08:00">
+                2017-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="关联关系字段-Relationship-fields"><a href="#关联关系字段-Relationship-fields" class="headerlink" title="关联关系字段 (Relationship fields)"></a>关联关系字段 (Relationship fields)</h3><blockquote>
+<p>ForeignKey,ManyToManyField与OneToOneField分别在Model中定义多对一，多对多，一对一关系。</p>
+</blockquote>
+<h5 id="例如，一本书由一家出版社出版，一家出版社可以出版很多书。一本书由多个作者合写，一个作者可以写很多书。"><a href="#例如，一本书由一家出版社出版，一家出版社可以出版很多书。一本书由多个作者合写，一个作者可以写很多书。" class="headerlink" title="例如，一本书由一家出版社出版，一家出版社可以出版很多书。一本书由多个作者合写，一个作者可以写很多书。"></a>例如，一本书由一家出版社出版，一家出版社可以出版很多书。一本书由多个作者合写，一个作者可以写很多书。</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Author</span><span class="params">(models.Model)</span>:</span></div><div class="line">    name=models.CharField(max_length=<span class="number">20</span>)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Publisher</span><span class="params">(models.Model)</span>:</span></div><div class="line">    name=models.CharField(max_length=<span class="number">20</span>)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Book</span><span class="params">(models.Model)</span>:</span></div><div class="line">    name=models.CharField(max_length=<span class="number">20</span>)</div><div class="line">    pub=models.ForeignKey(Publisher)</div><div class="line">    authors=models.ManyToManyField(Author)</div></pre></td></tr></table></figure>
+<h3 id="关联尚未定义的Model"><a href="#关联尚未定义的Model" class="headerlink" title="关联尚未定义的Model"></a>关联尚未定义的Model</h3><blockquote>
+<p>如果你要与某个尚未定义的 model 建立关联 ，就使用 model 的名称，而不是使用 model 对象本身。</p>
+</blockquote>
+<p>例子中，如果Publisher与Author在Book后面定义，需要写成下面的形式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Book</span><span class="params">(models.Model)</span>:</span></div><div class="line">    name=models.CharField(max_length=<span class="number">20</span>)</div><div class="line">    pub=models.ForeignKey(<span class="string">'Publisher'</span>)</div><div class="line">    authors=models.ManyToManyField(<span class="string">'Author'</span>)</div></pre></td></tr></table></figure>
+<h3 id="Model关联自身"><a href="#Model关联自身" class="headerlink" title="Model关联自身"></a>Model关联自身</h3><blockquote>
+<p>Model可以与自身做多对一关系</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span><span class="params">(models.Model)</span>:</span></div><div class="line">    name=models.CharField(max_length=<span class="number">20</span>)</div><div class="line">    leader=models.ForeignKey(<span class="string">'self'</span>,blank=<span class="keyword">True</span>,null=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Model也可以与自身做多对多关系</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(models.Model)</span>:</span></div><div class="line">    friends = models.ManyToManyField(<span class="string">"self"</span>)</div></pre></td></tr></table></figure>
+<h5 id="反向名称related-name"><a href="#反向名称related-name" class="headerlink" title="反向名称related_name"></a>反向名称related_name</h5><blockquote>
+<p>反向名称，用来从被关联字段指向关联字段。</p>
+</blockquote>
+<p>注意，在你定义 抽象 model (abstract models) 时，你必须显式指定反向名称; 只有在你这么做了之后， 某些特别语法 (some special syntax) 才能正常使用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Book</span><span class="params">(models.Model)</span>:</span></div><div class="line">    name=models.CharField(max_length=<span class="number">20</span>)</div><div class="line">    pub=models.ForeignKey(Publisher,related_name=<span class="string">'pub'</span>)</div><div class="line">    authors=models.ManyToManyField(Author,related_name=<span class="string">'author'</span>)</div></pre></td></tr></table></figure>
+<p>这样用Publisher或者Author反向查询Book时可以用related_name了:publisher1.pub.all()或者author1.author.all()。</p>
+<p>如果不想设置反向关系，设置related_name为’+’或者以’+’结束。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">user = models.ForeignKey(User, related_name=<span class="string">'+'</span>)</div></pre></td></tr></table></figure>
+<h3 id="数据库表现-Database-Representation"><a href="#数据库表现-Database-Representation" class="headerlink" title="数据库表现 (Database Representation)"></a>数据库表现 (Database Representation)</h3><blockquote>
+<p>多对一:Django 使用ForeignKey字段名称＋ “_id” 做为数据库中的列名称。在上面的例子中,BOOK model 对应的数据表中会有 一个 publisher_id 列。</p>
+<p>多对多:Django 创建一个中间表来表示ManyToManyField关系。默认情况下，中间表的名称由两个关系表名结合而成。<br>由于某些数据库对表名的长度有限制，所以中间表的名称会自动限制在64个字符以内，并包含一个不重复的哈希字符串。这<br>意味着，你可能看到类似 book_authors_9cdf4 这样的表名称。你可以使用 db_table 选项手动指定中间表名称。<br>但是，如果你想手动指定中间表，你可以用 through 选项来指定model 使用另外某个 model 来管理多对多关系。而这个 model 就是中间表所对应的 model :</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(models.Model)</span>:</span></div><div class="line">    name = models.CharField(max_length=<span class="number">128</span>)</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__unicode__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.name</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Group</span><span class="params">(models.Model)</span>:</span></div><div class="line">    name = models.CharField(max_length=<span class="number">128</span>)</div><div class="line">    members = models.ManyToManyField(Person, through=<span class="string">'Membership'</span>)</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__unicode__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.name</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Membership</span><span class="params">(models.Model)</span>:</span></div><div class="line">    person = models.ForeignKey(Person)</div><div class="line">    group = models.ForeignKey(Group)</div><div class="line">    date_joined = models.DateField()</div><div class="line">    invite_reason = models.CharField(max_length=<span class="number">64</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>要建立Person与Group的关系就不能用add,create,remove了，而是需要通过Membership进行。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>ringo = Person.objects.create(name=<span class="string">"Ringo Starr"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>paul = Person.objects.create(name=<span class="string">"Paul McCartney"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>beatles = Group.objects.create(name=<span class="string">"The Beatles"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>m1 = Membership(person=ringo, group=beatles,</div><div class="line"><span class="meta">... </span>    date_joined=date(<span class="number">1962</span>, <span class="number">8</span>, <span class="number">16</span>),</div><div class="line"><span class="meta">... </span>    invite_reason= <span class="string">"Needed a new drummer."</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>m1.save()</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/29/RBAC/" rel="next" title="RBAC">
+                <i class="fa fa-chevron-left"></i> RBAC
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="python-z" />
+          <p class="site-author-name" itemprop="name">python-z</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关联关系字段-Relationship-fields"><span class="nav-number">1.</span> <span class="nav-text">关联关系字段 (Relationship fields)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#例如，一本书由一家出版社出版，一家出版社可以出版很多书。一本书由多个作者合写，一个作者可以写很多书。"><span class="nav-number">1.0.1.</span> <span class="nav-text">例如，一本书由一家出版社出版，一家出版社可以出版很多书。一本书由多个作者合写，一个作者可以写很多书。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关联尚未定义的Model"><span class="nav-number">2.</span> <span class="nav-text">关联尚未定义的Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model关联自身"><span class="nav-number">3.</span> <span class="nav-text">Model关联自身</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#反向名称related-name"><span class="nav-number">3.0.1.</span> <span class="nav-text">反向名称related_name</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库表现-Database-Representation"><span class="nav-number">4.</span> <span class="nav-text">数据库表现 (Database Representation)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">python-z</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

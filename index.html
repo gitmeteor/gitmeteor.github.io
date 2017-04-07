@@ -247,6 +247,157 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/02/django-ORM-many-to-many/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="python-z">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="python-z">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/02/django-ORM-many-to-many/" itemprop="url">
+                  django-ORM-many_to_many
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-02T12:19:51+08:00">
+                2017-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="关联关系字段-Relationship-fields"><a href="#关联关系字段-Relationship-fields" class="headerlink" title="关联关系字段 (Relationship fields)"></a>关联关系字段 (Relationship fields)</h3><blockquote>
+<p>ForeignKey,ManyToManyField与OneToOneField分别在Model中定义多对一，多对多，一对一关系。</p>
+</blockquote>
+<h5 id="例如，一本书由一家出版社出版，一家出版社可以出版很多书。一本书由多个作者合写，一个作者可以写很多书。"><a href="#例如，一本书由一家出版社出版，一家出版社可以出版很多书。一本书由多个作者合写，一个作者可以写很多书。" class="headerlink" title="例如，一本书由一家出版社出版，一家出版社可以出版很多书。一本书由多个作者合写，一个作者可以写很多书。"></a>例如，一本书由一家出版社出版，一家出版社可以出版很多书。一本书由多个作者合写，一个作者可以写很多书。</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Author</span><span class="params">(models.Model)</span>:</span></div><div class="line">    name=models.CharField(max_length=<span class="number">20</span>)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Publisher</span><span class="params">(models.Model)</span>:</span></div><div class="line">    name=models.CharField(max_length=<span class="number">20</span>)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Book</span><span class="params">(models.Model)</span>:</span></div><div class="line">    name=models.CharField(max_length=<span class="number">20</span>)</div><div class="line">    pub=models.ForeignKey(Publisher)</div><div class="line">    authors=models.ManyToManyField(Author)</div></pre></td></tr></table></figure>
+<h3 id="关联尚未定义的Model"><a href="#关联尚未定义的Model" class="headerlink" title="关联尚未定义的Model"></a>关联尚未定义的Model</h3><blockquote>
+<p>如果你要与某个尚未定义的 model 建立关联 ，就使用 model 的名称，而不是使用 model 对象本身。</p>
+</blockquote>
+<p>例子中，如果Publisher与Author在Book后面定义，需要写成下面的形式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Book</span><span class="params">(models.Model)</span>:</span></div><div class="line">    name=models.CharField(max_length=<span class="number">20</span>)</div><div class="line">    pub=models.ForeignKey(<span class="string">'Publisher'</span>)</div><div class="line">    authors=models.ManyToManyField(<span class="string">'Author'</span>)</div></pre></td></tr></table></figure>
+<h3 id="Model关联自身"><a href="#Model关联自身" class="headerlink" title="Model关联自身"></a>Model关联自身</h3><blockquote>
+<p>Model可以与自身做多对一关系</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span><span class="params">(models.Model)</span>:</span></div><div class="line">    name=models.CharField(max_length=<span class="number">20</span>)</div><div class="line">    leader=models.ForeignKey(<span class="string">'self'</span>,blank=<span class="keyword">True</span>,null=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Model也可以与自身做多对多关系</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(models.Model)</span>:</span></div><div class="line">    friends = models.ManyToManyField(<span class="string">"self"</span>)</div></pre></td></tr></table></figure>
+<h5 id="反向名称related-name"><a href="#反向名称related-name" class="headerlink" title="反向名称related_name"></a>反向名称related_name</h5><blockquote>
+<p>反向名称，用来从被关联字段指向关联字段。</p>
+</blockquote>
+<p>注意，在你定义 抽象 model (abstract models) 时，你必须显式指定反向名称; 只有在你这么做了之后， 某些特别语法 (some special syntax) 才能正常使用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Book</span><span class="params">(models.Model)</span>:</span></div><div class="line">    name=models.CharField(max_length=<span class="number">20</span>)</div><div class="line">    pub=models.ForeignKey(Publisher,related_name=<span class="string">'pub'</span>)</div><div class="line">    authors=models.ManyToManyField(Author,related_name=<span class="string">'author'</span>)</div></pre></td></tr></table></figure>
+<p>这样用Publisher或者Author反向查询Book时可以用related_name了:publisher1.pub.all()或者author1.author.all()。</p>
+<p>如果不想设置反向关系，设置related_name为’+’或者以’+’结束。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">user = models.ForeignKey(User, related_name=<span class="string">'+'</span>)</div></pre></td></tr></table></figure>
+<h3 id="数据库表现-Database-Representation"><a href="#数据库表现-Database-Representation" class="headerlink" title="数据库表现 (Database Representation)"></a>数据库表现 (Database Representation)</h3><blockquote>
+<p>多对一:Django 使用ForeignKey字段名称＋ “_id” 做为数据库中的列名称。在上面的例子中,BOOK model 对应的数据表中会有 一个 publisher_id 列。</p>
+<p>多对多:Django 创建一个中间表来表示ManyToManyField关系。默认情况下，中间表的名称由两个关系表名结合而成。<br>由于某些数据库对表名的长度有限制，所以中间表的名称会自动限制在64个字符以内，并包含一个不重复的哈希字符串。这<br>意味着，你可能看到类似 book_authors_9cdf4 这样的表名称。你可以使用 db_table 选项手动指定中间表名称。<br>但是，如果你想手动指定中间表，你可以用 through 选项来指定model 使用另外某个 model 来管理多对多关系。而这个 model 就是中间表所对应的 model :</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(models.Model)</span>:</span></div><div class="line">    name = models.CharField(max_length=<span class="number">128</span>)</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__unicode__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.name</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Group</span><span class="params">(models.Model)</span>:</span></div><div class="line">    name = models.CharField(max_length=<span class="number">128</span>)</div><div class="line">    members = models.ManyToManyField(Person, through=<span class="string">'Membership'</span>)</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__unicode__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.name</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Membership</span><span class="params">(models.Model)</span>:</span></div><div class="line">    person = models.ForeignKey(Person)</div><div class="line">    group = models.ForeignKey(Group)</div><div class="line">    date_joined = models.DateField()</div><div class="line">    invite_reason = models.CharField(max_length=<span class="number">64</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>要建立Person与Group的关系就不能用add,create,remove了，而是需要通过Membership进行。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>ringo = Person.objects.create(name=<span class="string">"Ringo Starr"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>paul = Person.objects.create(name=<span class="string">"Paul McCartney"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>beatles = Group.objects.create(name=<span class="string">"The Beatles"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>m1 = Membership(person=ringo, group=beatles,</div><div class="line"><span class="meta">... </span>    date_joined=date(<span class="number">1962</span>, <span class="number">8</span>, <span class="number">16</span>),</div><div class="line"><span class="meta">... </span>    invite_reason= <span class="string">"Needed a new drummer."</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>m1.save()</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/29/RBAC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -994,7 +1145,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
