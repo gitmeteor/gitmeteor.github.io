@@ -247,6 +247,128 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/07/Python-data-structure-set/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="python-z">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="python-z">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/07/Python-data-structure-set/" itemprop="url">
+                  Python-data_structure-set
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-07T17:01:14+08:00">
+                2017-04-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><blockquote>
+<p>无序不重复元素集</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>x &amp; y <span class="comment"># 交集  </span></div><div class="line">set([<span class="string">'a'</span>, <span class="string">'m'</span>])  </div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>x | y <span class="comment"># 并集  </span></div><div class="line">set([<span class="string">'a'</span>, <span class="string">'p'</span>, <span class="string">'s'</span>, <span class="string">'h'</span>, <span class="string">'m'</span>])  </div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>x - y <span class="comment"># 差集  </span></div><div class="line">set([<span class="string">'p'</span>, <span class="string">'s'</span>])</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">a = t | s          <span class="comment"># t 和 s的并集  </span></div><div class="line"></div><div class="line">b = t &amp; s          <span class="comment"># t 和 s的交集  </span></div><div class="line"></div><div class="line">c = t – s          <span class="comment"># 求差集（项在t中，但不在s中）  </span></div><div class="line"></div><div class="line">d = t ^ s          <span class="comment"># 对称差集（项在t或s中，但不会同时出现在二者中）</span></div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/02/django-ORM-many-to-many/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1069,6 +1191,9 @@
 <li>为了解决这两个致命弱点，Python又引入了以下两种GC机制。</li>
 </ol>
 <h3 id="标记-清除"><a href="#标记-清除" class="headerlink" title="标记-清除"></a>标记-清除</h3><p>“标记-清除”法是为了解决循环引用问题。可以包含其他对象引用的容器对象（如list, dict, set，甚至class）都可能产生循环引用，为此，在申请内存时，所有容器对象的头部又加上了PyGC_Head来实现“标记-清除”机制。</p>
+<h3 id="分代回收"><a href="#分代回收" class="headerlink" title="分代回收"></a>分代回收</h3><p>分代回收的整体思想是：将系统中的所有内存块根据其存活时间划分为不同的集合，每个集合就成为一个“代”，垃圾收集频率随着“代”的存活时间的增大而减小，存活时间通常利用经过几次垃圾回收来度量。</p>
+<p>用来表示“代”的结构体是gc_generation， 包括了当前代链表表头、对象数量上限、当前对象数量：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// gcmodule.c</span></div><div class="line"><span class="keyword">struct</span> gc_generation &#123;</div><div class="line">    PyGC_Head head;</div><div class="line">    <span class="keyword">int</span> threshold; <span class="comment">/* collection threshold */</span></div><div class="line">    <span class="keyword">int</span> count; <span class="comment">/* count of allocations or collections of younger</span></div><div class="line">              generations */</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 
           
         
@@ -1145,7 +1270,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

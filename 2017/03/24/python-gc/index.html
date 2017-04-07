@@ -97,7 +97,7 @@
 <meta property="og:description" content="Python GC主要使用引用计数（reference counting）来跟踪和回收垃圾。在引用计数的基础上，通过“标记-清除”（mark and sweep）解决容器对象可能产生的循环引用问题，通过“分代回收”（generation collection）以空间换时间的方法提高垃圾回收效率。
 
 引用计数 -引用计数法在对象内部维护了一个被其他对象引用数的引用计数值，当这个引用计数值为0时，说">
-<meta property="og:updated_time" content="2017-03-26T05:43:32.798Z">
+<meta property="og:updated_time" content="2017-04-07T09:04:48.801Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python-gc">
 <meta name="twitter:description" content="Python GC主要使用引用计数（reference counting）来跟踪和回收垃圾。在引用计数的基础上，通过“标记-清除”（mark and sweep）解决容器对象可能产生的循环引用问题，通过“分代回收”（generation collection）以空间换时间的方法提高垃圾回收效率。
@@ -350,6 +350,9 @@
 <li>为了解决这两个致命弱点，Python又引入了以下两种GC机制。</li>
 </ol>
 <h3 id="标记-清除"><a href="#标记-清除" class="headerlink" title="标记-清除"></a>标记-清除</h3><p>“标记-清除”法是为了解决循环引用问题。可以包含其他对象引用的容器对象（如list, dict, set，甚至class）都可能产生循环引用，为此，在申请内存时，所有容器对象的头部又加上了PyGC_Head来实现“标记-清除”机制。</p>
+<h3 id="分代回收"><a href="#分代回收" class="headerlink" title="分代回收"></a>分代回收</h3><p>分代回收的整体思想是：将系统中的所有内存块根据其存活时间划分为不同的集合，每个集合就成为一个“代”，垃圾收集频率随着“代”的存活时间的增大而减小，存活时间通常利用经过几次垃圾回收来度量。</p>
+<p>用来表示“代”的结构体是gc_generation， 包括了当前代链表表头、对象数量上限、当前对象数量：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// gcmodule.c</span></div><div class="line"><span class="keyword">struct</span> gc_generation &#123;</div><div class="line">    PyGC_Head head;</div><div class="line">    <span class="keyword">int</span> threshold; <span class="comment">/* collection threshold */</span></div><div class="line">    <span class="keyword">int</span> count; <span class="comment">/* count of allocations or collections of younger</span></div><div class="line">              generations */</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -466,7 +469,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -512,7 +515,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引用计数"><span class="nav-number">1.</span> <span class="nav-text">引用计数 -</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标记-清除"><span class="nav-number">2.</span> <span class="nav-text">标记-清除</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引用计数"><span class="nav-number">1.</span> <span class="nav-text">引用计数 -</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标记-清除"><span class="nav-number">2.</span> <span class="nav-text">标记-清除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分代回收"><span class="nav-number">3.</span> <span class="nav-text">分代回收</span></a></li></ol></div>
             
 
           </div>
