@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -87,40 +87,115 @@
 
 
 
-<meta name="description" content="python-memory-management
-python的内存管理机制由两部分组成， 其由PYMALLOC_DEBUG控制，在debug模式下的内存管理机制和正常模式下的内存管理模式。
+<meta name="description" content="正则表达式模式
 
 
-python的内存管理机制可以抽象成一种层次结构：
+模式
+描述
 
-最底层：操作系统提供的内存管理接口，由其实现并维护
 
-第一层：对最底层的包装，为python提供统一的原生内存管理接口和面向python中类型的内存分">
+
+
+^
+匹配字符串的开头
+
+
+$
+匹配字符串的末尾。
+
+
+.
+匹配任意字符，除了换行符，当re.DOTALL标记被指定时，则可以匹配包括换行符的任意字符。
+
+
+[…]
+用来表示一组字符,单独列出：[amk] 匹配 ‘a’，’m’或’k’
+
+
+[^…]
+不在[]中的字符：[^abc] 匹配除了a,b,c之外的字符。
+
+
+re*
+匹配0个或多个的表达式。
+
+
+re+">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python-memory-management.md">
-<meta property="og:url" content="http://yoursite.com/2017/03/24/python-memory-management/index.html">
+<meta property="og:title" content="python-reg">
+<meta property="og:url" content="http://yoursite.com/2017/04/09/python-reg/index.html">
 <meta property="og:site_name" content="python-z">
-<meta property="og:description" content="python-memory-management
-python的内存管理机制由两部分组成， 其由PYMALLOC_DEBUG控制，在debug模式下的内存管理机制和正常模式下的内存管理模式。
+<meta property="og:description" content="正则表达式模式
 
 
-python的内存管理机制可以抽象成一种层次结构：
+模式
+描述
 
-最底层：操作系统提供的内存管理接口，由其实现并维护
 
-第一层：对最底层的包装，为python提供统一的原生内存管理接口和面向python中类型的内存分">
-<meta property="og:updated_time" content="2017-03-26T05:43:28.562Z">
+
+
+^
+匹配字符串的开头
+
+
+$
+匹配字符串的末尾。
+
+
+.
+匹配任意字符，除了换行符，当re.DOTALL标记被指定时，则可以匹配包括换行符的任意字符。
+
+
+[…]
+用来表示一组字符,单独列出：[amk] 匹配 ‘a’，’m’或’k’
+
+
+[^…]
+不在[]中的字符：[^abc] 匹配除了a,b,c之外的字符。
+
+
+re*
+匹配0个或多个的表达式。
+
+
+re+">
+<meta property="og:updated_time" content="2017-04-09T06:54:23.499Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python-memory-management.md">
-<meta name="twitter:description" content="python-memory-management
-python的内存管理机制由两部分组成， 其由PYMALLOC_DEBUG控制，在debug模式下的内存管理机制和正常模式下的内存管理模式。
+<meta name="twitter:title" content="python-reg">
+<meta name="twitter:description" content="正则表达式模式
 
 
-python的内存管理机制可以抽象成一种层次结构：
+模式
+描述
 
-最底层：操作系统提供的内存管理接口，由其实现并维护
 
-第一层：对最底层的包装，为python提供统一的原生内存管理接口和面向python中类型的内存分">
+
+
+^
+匹配字符串的开头
+
+
+$
+匹配字符串的末尾。
+
+
+.
+匹配任意字符，除了换行符，当re.DOTALL标记被指定时，则可以匹配包括换行符的任意字符。
+
+
+[…]
+用来表示一组字符,单独列出：[amk] 匹配 ‘a’，’m’或’k’
+
+
+[^…]
+不在[]中的字符：[^abc] 匹配除了a,b,c之外的字符。
+
+
+re*
+匹配0个或多个的表达式。
+
+
+re+">
 
 
 
@@ -148,13 +223,13 @@ python的内存管理机制可以抽象成一种层次结构：
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/24/python-memory-management/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/09/python-reg/"/>
 
 
 
 
 
-  <title> python-memory-management.md | python-z </title>
+  <title> python-reg | python-z </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -273,7 +348,7 @@ python的内存管理机制可以抽象成一种层次结构：
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/24/python-memory-management/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/09/python-reg/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="python-z">
@@ -294,7 +369,7 @@ python的内存管理机制可以抽象成一种层次结构：
             
             
               
-                python-memory-management.md
+                python-reg
               
             
           </h1>
@@ -309,8 +384,8 @@ python的内存管理机制可以抽象成一种层次结构：
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-24T19:50:55+08:00">
-                2017-03-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-09T14:33:14+08:00">
+                2017-04-09
               </time>
             
 
@@ -345,62 +420,245 @@ python的内存管理机制可以抽象成一种层次结构：
       
 
       
-        <h3 id="python-memory-management"><a href="#python-memory-management" class="headerlink" title="python-memory-management"></a>python-memory-management</h3><blockquote>
-<p>python的内存管理机制由两部分组成， 其由PYMALLOC_DEBUG控制，在debug模式下的内存管理机制和正常模式下的内存管理模式。</p>
-</blockquote>
-<ol>
-<li><p>python的内存管理机制可以抽象成一种层次结构：</p>
-<ol>
-<li><p>最底层：操作系统提供的内存管理接口，由其实现并维护</p>
-</li>
-<li><p>第一层：对最底层的包装，为python提供统一的原生内存管理接口和面向python中类型的内存分配器。简单地说，C语言中的malloc是需要用户自行提供申请空间的大小，而python可以由类型和数量自行判断内存空间大小</p>
-</li>
-<li><p>第二层：提供创建python对象的接口</p>
-</li>
-<li><p>第三层：为常用对象提供更抽象的内存管理策略，如整数，字符串，主要是对象缓存池机制</p>
-</li>
-</ol>
-</li>
-</ol>
-<blockquote>
-<p>layer 3: Object-specific memory(int/dict/list/string….)<br>          Python 实现并维护<br>          更高抽象层次的内存管理策略, 主要是各类特定对象的缓冲池机制. 具体见前面几篇涉及的内存分配机制</p>
-<p>layer 2: Python’s object allocator<br>          Python 实现并维护<br>          实现了创建/销毁Python对象的接口(PyObject_New/Del), 涉及对象参数/引用计数等</p>
-<p>layer 1: Python’s raw memory allocator (PyMem_ API)<br>          Python 实现并维护, 包装了第0层的内存管理接口, 提供统一的raw memory管理接口<br>          封装的原因: 不同操作系统 C 行为不一定一致, 保证可移植性, 相同语义相同行为</p>
-<p>layer 0: Underlying general-purpose allocator (ex: C library malloc)<br>          操作系统提供的内存管理接口, 由操作系统实现并管理, Python不能干涉这一层的行为</p>
-</blockquote>
-<h3 id="小块空间的内存池"><a href="#小块空间的内存池" class="headerlink" title="小块空间的内存池"></a>小块空间的内存池</h3><blockquote>
-<p>python的内存池机制，用于小块内存的申请和释放，同样也有四层层次结构组成，分别是block,pool,arena和内存池。</p>
-</blockquote>
-<ol>
-<li><p>第一层block：确定大小的内存块，大小有相应的划分且有上限</p>
-</li>
-<li><p>第二层pool：一组block的集合叫pool，最重要的pool_header和freeblock链表</p>
-</li>
-<li><p>第三层arena:一组pool的集合，分已使用和未使用两种状态</p>
-</li>
-<li><p>第四层内存池：Python中当申请内存超过某个值就启动malloc行为，当低于这个值才进行内存池申请内存，根据申请内存的大小获得对应的序号，如果已使用的pool中有可用的pool,则用其分配block，否则从已用arena中获取pool，否则申请arena，成功获取后开始初始化</p>
-</li>
-</ol>
-<h3 id="block"><a href="#block" class="headerlink" title="block"></a>block</h3><blockquote>
-<p>Python内存的最小单位, 所有block长度都是8字节对齐的<br>注意这里block只是一个概念, 在源代码中并没有实体存在.<br>不同类型block, 对应不同内存大小, 这个内存大小的值被称为size class.<br>不同长度的block</p>
-</blockquote>
-<h3 id="pool"><a href="#pool" class="headerlink" title="pool"></a>pool</h3><blockquote>
-<p>pool管理block, 一个pool管理着一堆有固定大小的内存块<br>本质: pool管理着一大块内存, 它有一定的策略, 将这块大的内存划分为多个大小一致的小块内存.<br>pool的4kB内存 = pool_header + block集合(N多大小一样的block)</p>
-</blockquote>
-<h3 id="arena"><a href="#arena" class="headerlink" title="arena"></a>arena</h3><blockquote>
-<p>arena: 多个pool聚合的结果<br>arena size<br>pool的大小默认值位4KB<br>arena的大小默认值256KB, 能放置 256/4=64 个pool</p>
-</blockquote>
-<h3 id="arena回收"><a href="#arena回收" class="headerlink" title="arena回收"></a>arena回收</h3><blockquote>
-<p>内存分配和回收最小单位是block, 当一个block被回收的时候, 可能触发pool被回收, pool被回收, 将会触发arena的回收机制</p>
-</blockquote>
-<h5 id="pool在内存池中的三种状态"><a href="#pool在内存池中的三种状态" class="headerlink" title="pool在内存池中的三种状态"></a>pool在内存池中的三种状态</h5><ol>
-<li><p>used状态: pool中至少有一个block已经被使用, 并且至少有一个block未被使用. 这种状态的pool受控于Python内部维护的usedpool数组</p>
-</li>
-<li><p>full状态: pool中所有的block都已经被使用, 这种状态的pool在arena中, 但不在arena的freepools链表中<br>处于full的pool各自独立, 不会被链表维护起来</p>
-</li>
-<li><p>empty状态: pool中所有block都未被使用, 处于这个状态的pool的集合通过其pool_header中的nextpool构成一个链表, 链表的表头是arena_object中的freepools<br>usedpools<br>usedpools数组: 维护着所有处于used状态的pool, 当申请内存的时候, 会通过usedpools寻找到一块可用的(处于used状态的)pool, 从中分配一个block</p>
-</li>
-</ol>
+        <h3 id="正则表达式模式"><a href="#正则表达式模式" class="headerlink" title="正则表达式模式"></a>正则表达式模式</h3><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^</td>
+<td>匹配字符串的开头</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配字符串的末尾。</td>
+</tr>
+<tr>
+<td>.</td>
+<td>匹配任意字符，除了换行符，当re.DOTALL标记被指定时，则可以匹配包括换行符的任意字符。</td>
+</tr>
+<tr>
+<td>[…]</td>
+<td>用来表示一组字符,单独列出：[amk] 匹配 ‘a’，’m’或’k’</td>
+</tr>
+<tr>
+<td>[^…]</td>
+<td>不在[]中的字符：[^abc] 匹配除了a,b,c之外的字符。</td>
+</tr>
+<tr>
+<td>re*</td>
+<td>匹配0个或多个的表达式。</td>
+</tr>
+<tr>
+<td>re+</td>
+<td>匹配1个或多个的表达式。</td>
+</tr>
+<tr>
+<td>re?</td>
+<td>匹配0个或1个由前面的正则表达式定义的片段，非贪婪方式</td>
+</tr>
+<tr>
+<td>re{ n,}</td>
+<td>精确匹配n个前面表达式。</td>
+</tr>
+<tr>
+<td>re{ n, m}</td>
+<td>匹配 n 到 m 次由前面的正则表达式定义的片段，贪婪方式</td>
+</tr>
+<tr>
+<td>(re)</td>
+<td>G匹配括号内的表达式，也表示一个组</td>
+</tr>
+<tr>
+<td>(?imx)</td>
+<td>正则表达式包含三种可选标志：i, m, 或 x 。只影响括号中的区域。</td>
+</tr>
+<tr>
+<td>(?-imx)</td>
+<td>正则表达式关闭 i, m, 或 x 可选标志。只影响括号中的区域。</td>
+</tr>
+<tr>
+<td>(?: re)</td>
+<td>类似 (…), 但是不表示一个组</td>
+</tr>
+<tr>
+<td>(?imx: re)</td>
+<td>在括号中使用i, m, 或 x 可选标志</td>
+</tr>
+<tr>
+<td>(?-imx: re)</td>
+<td>在括号中不使用i, m, 或 x 可选标志</td>
+</tr>
+<tr>
+<td>(?#…)</td>
+<td>注释.</td>
+</tr>
+<tr>
+<td>(?= re)</td>
+<td>前向肯定界定符。如果所含正则表达式，以 … 表示，在当前位置成功匹配时成功，否则失败。但一旦所含表达式已经尝试，匹配引擎根本没有提高；模式的剩余部分还要尝试界定符的右边。</td>
+</tr>
+<tr>
+<td>(?! re)</td>
+<td>前向否定界定符。与肯定界定符相反；当所含表达式不能在字符串当前位置匹配时成功</td>
+</tr>
+<tr>
+<td>(?&gt; re)</td>
+<td>匹配的独立模式，省去回溯。</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配字母数字及下划线</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>匹配非字母数字及下划线</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配任意空白字符，等价于 [\t\n\r\f].</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配任意非空字符</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配任意数字，等价于 [0-9].</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配任意非数字</td>
+</tr>
+<tr>
+<td>\A</td>
+<td>匹配字符串开始</td>
+</tr>
+<tr>
+<td>\Z</td>
+<td>匹配字符串结束，如果是存在换行，只匹配到换行前的结束字符串。c</td>
+</tr>
+<tr>
+<td>\z</td>
+<td>匹配字符串结束</td>
+</tr>
+<tr>
+<td>\G</td>
+<td>匹配最后匹配完成的位置。</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配一个单词边界，也就是指单词和空格间的位置。例如， ‘er\b’ 可以匹配”never” 中的 ‘er’，但不能匹配 “verb” 中的 ‘er’。</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>匹配非单词边界。’er\B’ 能匹配 “verb” 中的 ‘er’，但不能匹配 “never” 中的 ‘er’。</td>
+</tr>
+<tr>
+<td>\n, \t, 等.</td>
+<td>匹配一个换行符。匹配一个制表符。等</td>
+</tr>
+<tr>
+<td>\1…\9</td>
+<td>匹配第n个分组的子表达式。</td>
+</tr>
+<tr>
+<td>\10</td>
+<td>匹配第n个分组的子表达式，如果它经匹配。否则指的是八进制字符码的表达式。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="正则表达式实例"><a href="#正则表达式实例" class="headerlink" title="正则表达式实例"></a>正则表达式实例</h3><p>字符匹配</p>
+<table>
+<thead>
+<tr>
+<th>实例</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>python</td>
+<td>匹配 “python”.</td>
+</tr>
+<tr>
+<td>[Pp]ython</td>
+<td>匹配 “Python” 或 “python”</td>
+</tr>
+<tr>
+<td>rub[ye]</td>
+<td>匹配 “ruby” 或 “rube”</td>
+</tr>
+<tr>
+<td>[aeiou]</td>
+<td>匹配中括号内的任意一个字母</td>
+</tr>
+<tr>
+<td>[0-9]</td>
+<td>匹配任何数字。类似于 [0123456789]</td>
+</tr>
+<tr>
+<td>[a-z]</td>
+<td>匹配任何小写字母</td>
+</tr>
+<tr>
+<td>[A-Z]</td>
+<td>匹配任何大写字母</td>
+</tr>
+<tr>
+<td>[a-zA-Z0-9]</td>
+<td>匹配任何字母及数字</td>
+</tr>
+<tr>
+<td>[^aeiou]</td>
+<td>除了aeiou字母以外的所有字符</td>
+</tr>
+<tr>
+<td>[^0-9]</td>
+<td>匹配除了数字外的字符</td>
+</tr>
+</tbody>
+</table>
+<h3 id="特殊字符类"><a href="#特殊字符类" class="headerlink" title="特殊字符类"></a>特殊字符类</h3><table>
+<thead>
+<tr>
+<th>实例</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td>匹配除 “\n” 之外的任何单个字符。要匹配包括 ‘\n’ 在内的任何字符，请使用象 ‘[.\n]’ 的模式。</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配一个数字字符。等价于 [0-9]。</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配一个非数字字符。等价于 [^0-9]。</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配包括下划线的任何单词字符。等价于’[A-Za-z0-9_]’。</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>匹配任何非单词字符。等价于 ‘[^A-Za-z0-9_]’。</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -422,12 +680,6 @@ python的内存管理机制可以抽象成一种层次结构：
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/python/" rel="tag"># python</a>
-          
-        </div>
-      
 
       
         
@@ -437,8 +689,8 @@ python的内存管理机制可以抽象成一种层次结构：
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/24/python-gc/" rel="next" title="python-gc">
-                <i class="fa fa-chevron-left"></i> python-gc
+              <a href="/2017/04/07/Python-data-structure-set/" rel="next" title="Python-data_structure-set">
+                <i class="fa fa-chevron-left"></i> Python-data_structure-set
               </a>
             
           </div>
@@ -446,10 +698,6 @@ python的内存管理机制可以抽象成一种层次结构：
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/24/hexo/" rel="prev" title="Test!">
-                Test! <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -567,7 +815,7 @@ python的内存管理机制可以抽象成一种层次结构：
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#python-memory-management"><span class="nav-number">1.</span> <span class="nav-text">python-memory-management</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小块空间的内存池"><span class="nav-number">2.</span> <span class="nav-text">小块空间的内存池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#block"><span class="nav-number">3.</span> <span class="nav-text">block</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pool"><span class="nav-number">4.</span> <span class="nav-text">pool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#arena"><span class="nav-number">5.</span> <span class="nav-text">arena</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#arena回收"><span class="nav-number">6.</span> <span class="nav-text">arena回收</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#pool在内存池中的三种状态"><span class="nav-number">6.0.1.</span> <span class="nav-text">pool在内存池中的三种状态</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#正则表达式模式"><span class="nav-number">1.</span> <span class="nav-text">正则表达式模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则表达式实例"><span class="nav-number">2.</span> <span class="nav-text">正则表达式实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊字符类"><span class="nav-number">3.</span> <span class="nav-text">特殊字符类</span></a></li></ol></div>
             
 
           </div>
